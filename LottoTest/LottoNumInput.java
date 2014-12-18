@@ -8,7 +8,7 @@ public class LottoNumInput {
 	private static Scanner sn;
 	
 
-	public void GetLottoNum() {
+	public void connectCustomer() {
 
 		while (true) {
 			System.out.println("자동입력은 1 , 직접입력은 2를 눌러주세요");

@@ -14,12 +14,11 @@ class LottoControl {
 	public void Controller() {
 
 		LottoIn = new LottoNumInput();
-		LottoIn.GetLottoNum();
-		LottoSheet = LottoIn.LottoSheetPass();
-		int Select = LottoIn.LottoselectPass();
+		LottoIn.connectCustomer();
+		LottoSheet = LottoIn.getLottoSheet();
+		int Select = LottoIn.getLottoselect();
 
 		for (int i = 0; i < LottoSheet; i++) {
-
 			LottoEx = new LottoExam();
 			LottoEx.OutoLotto(Select);
 			LottoEx.ManualLotto(Select);
