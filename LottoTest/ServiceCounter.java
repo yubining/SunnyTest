@@ -5,24 +5,42 @@ import java.util.*;
 public class ServiceCounter {
 
 	private int lottoselect, lottoCountSheet;
-	
+	int[][] lottosheet;
 
 	public void buyRequest(Scanner sn) {
 		// TODO Auto-generated method stub
-		
+		LottoSystem lottoSystem;
 		communication(sn);
-		if(isAuto()){
-			
-			LottoSystem lottoSystem = new LottoSystem(lottoselect , lottoCountSheet);
-			lottoSystem.autoLotto(lottoCountSheet);
-		}else{
-			int[][] lottosheet = manualLotto(sn,lottoCountSheet);
-			LottoSystem lottoSystem = new LottoSystem(lottosheet);
+		if (isAuto()) {
+
+			lottoSystem = new LottoSystem(lottoselect, lottoCountSheet);
+			lottosheet = lottoSystem.autoLotto(lottoCountSheet);
+		} else {
+			lottosheet = manualLotto(sn, lottoCountSheet);
+			lottoSystem = new LottoSystem(lottosheet);
 		}
-		
+
+		int[] matchCount = lottoSystem.matchLotto(lottosheet,
+				lottoSystem.createWinLotto());
+		System.out.println();
+		System.out.println("구매한 로또 ");
+		printSheet(lottosheet,matchCount);
 	}
 
-	public int[][] manualLotto(Scanner sn,int lottoCountSheet) {
+	public void printSheet(int[][] lottoSheet,int[] matchCount) {
+		System.out.println("선택한 숫자는:");
+		for (int z = 0; z < lottoSheet.length; z++) {
+			for (int i = 0; i < lottoSheet[z].length; i++) {
+				System.out.print("[" + lottoSheet[z][i] + "]" + " ");
+
+			}
+			System.out.println("맞은숫자 :"+matchCount[z]);
+			System.out.println();
+		}
+
+	}
+
+	public int[][] manualLotto(Scanner sn, int lottoCountSheet) {
 		int[][] lottosheet = new int[lottoCountSheet][6];
 		int[] userInput = new int[6];
 
@@ -58,21 +76,15 @@ public class ServiceCounter {
 				}
 
 			}
-			System.out.println("선택한 숫자는: \n");
-			for (int i1 = 0; i1 < userInput.length; i1++) {
-				System.out.print("[" + userInput[i1] + "]" + " ");
 
-			}
-		System.out.println();
 		}
 		return lottosheet;
 	}
 
 	private boolean isAuto() {
 		// TODO Auto-generated method stub
-		return (lottoselect==1);
+		return (lottoselect == 1);
 	}
-
 
 	private void communication(Scanner sn) {
 		while (true) {
@@ -95,7 +107,5 @@ public class ServiceCounter {
 			System.out.println("다시입력하세요");
 		}
 	}
-	
-	
 
 }
