@@ -1,5 +1,4 @@
 package LottoTest;
-
 public class LottoOutput {
 
 	private int LottoSelect;

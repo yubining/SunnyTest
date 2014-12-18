@@ -1,5 +1,6 @@
 package LottoTest;
 
+
 class LottoControl {
 
 	private int LottoSheet;
