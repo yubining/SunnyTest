@@ -33,12 +33,12 @@ public class LottoNumInput {
 
 	}
 
-	public int LottoSheetPass() {
+	public int getLottoSheet() {
 		return LottoSheet;
 
 	}
 
-	public int LottoselectPass() {
+	public int getLottoselect() {
 		return Lottoselect;
 	}
 
